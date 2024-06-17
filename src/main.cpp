@@ -9,7 +9,7 @@
 int main(int argc, char *args[]) {
   getSDL(window, windowSurface, "s-melt");
 
-  Camera cam(windowSurface, 200);
+  Camera cam(windowSurface, 640);
   MeshObject obj;
   obj.pos = Types::Pos3(0, 0, -150);
   obj.verts.push_back(Types::Pos3(100, 100, 100));

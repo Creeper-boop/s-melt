@@ -69,8 +69,8 @@ public:
 
   std::vector<ProjPart> composite;
 
-  Camera(SDL_Surface *surface, int16_t foc = 100,
-         Types::Pos3 pos = Types::Pos3(), Types::Quat rot = Types::Quat())
+  Camera(SDL_Surface *surface, int16_t foc, Types::Pos3 pos = Types::Pos3(),
+         Types::Quat rot = Types::Quat())
       : foc{foc}, pos{pos}, rot{rot},
         row_buff(WINDOW_WIDTH * surface->format->BytesPerPixel, 0),
         composite() {}
