@@ -12,20 +12,20 @@ int main(int argc, char *args[]) {
   Camera cam(windowSurface, 200);
   MeshObject obj;
   obj.pos = Types::Pos3(0, 0, -150);
-  obj.verts->push_back(Types::Pos3(100, 100, 100));
-  obj.verts->push_back(Types::Pos3(-100, 100, 100));
-  obj.verts->push_back(Types::Pos3(100, -100, 100));
-  obj.verts->push_back(Types::Pos3(100, 100, -100));
-  obj.verts->push_back(Types::Pos3(100, -100, -100));
-  obj.verts->push_back(Types::Pos3(-100, 100, -100));
-  obj.verts->push_back(Types::Pos3(-100, -100, 100));
-  obj.verts->push_back(Types::Pos3(-100, -100, -100));
-  obj.indicies->push_back(0x0001);
-  obj.indicies->push_back(0x0002);
-  obj.indicies->push_back(0x0003);
-  obj.indicies->push_back(0x0704);
-  obj.indicies->push_back(0x0705);
-  obj.indicies->push_back(0x0706);
+  obj.verts.push_back(Types::Pos3(100, 100, 100));
+  obj.verts.push_back(Types::Pos3(-100, 100, 100));
+  obj.verts.push_back(Types::Pos3(100, -100, 100));
+  obj.verts.push_back(Types::Pos3(100, 100, -100));
+  obj.verts.push_back(Types::Pos3(100, -100, -100));
+  obj.verts.push_back(Types::Pos3(-100, 100, -100));
+  obj.verts.push_back(Types::Pos3(-100, -100, 100));
+  obj.verts.push_back(Types::Pos3(-100, -100, -100));
+  obj.indicies.push_back(0x0001);
+  obj.indicies.push_back(0x0002);
+  obj.indicies.push_back(0x0003);
+  obj.indicies.push_back(0x0704);
+  obj.indicies.push_back(0x0705);
+  obj.indicies.push_back(0x0706);
 
   Types::Quat rotquat =
       Types::Quat(0x3fff, 0x0000, 0x0047, 0x0000); // angle of 1° over 0 1 0

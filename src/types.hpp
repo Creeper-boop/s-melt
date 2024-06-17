@@ -1,5 +1,6 @@
 #include <cmath>
 #include <cstdint>
+#include <cstdio>
 
 namespace Types {
 class Vector2;
@@ -18,13 +19,12 @@ public:
 
   f2_14 operator>>(int8_t b) { return this->val >> b; }
   f2_14 operator<<(int8_t b) { return this->val << b; }
-  // division by a power of 2
-  f2_14 div2(int8_t b) {
-    return this->val & 0x8000 | (this->val & 0x7fff) >> b;
-  }
   // multiplication by power of 2
   f2_14 mul2(int8_t b) {
-    return this->val & 0x8000 | (this->val & 0x7fff) << b;
+    // if ((this->val & 0xc000) == 0x8000 || (this->val & 0xc000) == 0x4000)
+    //  printf("WARN %04x\n", (uint16_t)this->val);
+    // return this->val & 0x8000 | (this->val & 0x7fff) << b;
+    return this->val << b;
   }
 
   f2_14 operator+(f2_14 b) { return this->val + b.val; }

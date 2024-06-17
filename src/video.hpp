@@ -35,19 +35,13 @@ public:
   Types::Pos3 pos; // object center and point of rotation
   Types::Quat rot; // object rotation
   int32_t size;    // distance between object centre and the furthest vert
-  std::vector<Types::Pos3> *verts; // max 256 elements
-  std::vector<int16_t> *indicies;
+  std::vector<Types::Pos3> verts; // max 256 elements
+  std::vector<int16_t> indicies;
 
   MeshObject(Types::Pos3 pos = Types::Pos3(), Types::Quat rot = Types::Quat())
-      : pos{pos}, rot{rot} {
-    this->verts = new std::vector<Types::Pos3>();
-    this->indicies = new std::vector<int16_t>();
-  }
+      : pos{pos}, rot{rot}, verts(), indicies() {}
 
-  ~MeshObject() {
-    delete this->verts;
-    delete this->indicies;
-  }
+  ~MeshObject() {}
 };
 // projected object
 class ProjPart {
@@ -65,7 +59,7 @@ public:
 class Camera {
 private:
   // this has to change for pico but for now is what is used
-  std::vector<int8_t> *row_buff;
+  std::vector<int8_t> row_buff;
   void setPixel(int16_t pix, int32_t col, SDL_PixelFormat *format);
 
 public:
@@ -73,19 +67,14 @@ public:
   Types::Quat rot;
   Types::Pos3 pos;
 
-  std::vector<ProjPart> *composite;
+  std::vector<ProjPart> composite;
 
   Camera(SDL_Surface *surface, int16_t foc = 100,
          Types::Pos3 pos = Types::Pos3(), Types::Quat rot = Types::Quat())
-      : foc{foc}, pos{pos}, rot{rot} {
-    this->row_buff = new std::vector<int8_t>(
-        WINDOW_WIDTH * surface->format->BytesPerPixel, 0);
-    this->composite = new std::vector<ProjPart>();
-  }
-  ~Camera() {
-    delete this->row_buff;
-    delete this->composite;
-  }
+      : foc{foc}, pos{pos}, rot{rot},
+        row_buff(WINDOW_WIDTH * surface->format->BytesPerPixel, 0),
+        composite() {}
+  ~Camera() {}
 
   void project(MeshObject *obj);
   void draw(SDL_Surface *surface);

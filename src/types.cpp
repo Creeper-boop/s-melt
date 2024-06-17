@@ -54,6 +54,7 @@ Types::Matrix Types::Quat::toRot() {
 
   Matrix out = Matrix();
   // if wierd stuff happens then this is the problem
+  
   out.a.x = (f2_14)0x4000 - (jj + kk).mul2(1);
   out.a.y = (ij - rk).mul2(1);
   out.a.z = (ik + rj).mul2(1);
